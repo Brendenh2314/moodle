@@ -19,12 +19,12 @@ export default function Hero() {
           "text-5xl sm:text-text-6xl md:text-7xl text-center " + fugaz.className
         }
       >
-        <span className="textGradient">Moodle</span> helps you track your
-        <span className="textGradient">daily</span> mood!
+        <span className="textGradient">Moodle</span> helps you track your 
+        <span className="textGradient"> daily</span> mood!
       </h1>
       <p className="text-lg sm:text-xl md:text-2xl text-center w-full mx-auto max-w-[600px]">
         Record your mood and see how you feel on
-        <span className="font-semibold">every day of every year</span>
+        <span className="font-semibold"> every day of every year</span>
       </p>
       <CallToAction />
       <Calandar demo/>
