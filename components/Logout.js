@@ -1,26 +1,35 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from './Button'
 import { useAuth } from '@/context/AuthContext'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
-
 export default function Logout() {
-    const { logout, currentUser} = useAuth()
+    const { logout, currentUser } = useAuth()
     const pathname = usePathname()
-    if(!currentUser) {
+    const [clientPathname, setClientPathname] = useState('')
+
+    useEffect(() => {
+        // Ensure that the pathname is accessed only on the client
+        if (typeof window !== 'undefined') {
+            setClientPathname(pathname)
+        }
+    }, [pathname])
+
+    if (!currentUser) {
         return null
     }
 
-    if(pathname === '/'){
+    if (clientPathname === '/') {
         return (
             <Link href={'/dashboard'}>
-                <Button text="Go to Dashboard"/>
+                <Button text="Go to Dashboard" />
             </Link>
         )
     }
+
     return (
-        <Button text='Logout' clickHandler={logout}/>
+        <Button text='Logout' clickHandler={logout} />
     )
 }
