@@ -1,6 +1,6 @@
 'use client'
 import { Fugaz_One } from '@next/font/google';
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from './Button';
 import Calandar from './Calandar';
 import { useAuth } from '@/context/AuthContext';
@@ -82,51 +82,49 @@ export default function Dashboard() {
   }
 
   useEffect(() => {
-    if (!currentUser || !userDataObj){
+    if (!currentUser || !userDataObj) {
       return
     }
     setData(userDataObj)
   }, [currentUser, userDataObj])
 
-    if(loading) {
-      return <Loading />
-    }
+  if (loading) {
+    return <Loading />
+  }
 
-    if(!currentUser) {
-      return <Login />
-    }
+  if (!currentUser) {
+    return <Login />
+  }
 
   return (
     <div className='flex flex-col flex-1 gap-8 sm:gap-12 md:gap-16'>
-      <div className='grid grid-cols-3 bg-indigo-50 text-indigo-500 rounded-lg p-4 gap-4'>
+      <div className='grid grid-cols-3 bg-pink-50 text-pink-500 rounded-lg p-4 gap-4'>
         {Object.keys(statuses).map((status, statusIndex) => {
           return (
             <div key={statusIndex} className='flex flex-col gap-1 sm:gap-2'>
-              <p className='font-mediom capitalize text-xs sm:text-sm truncate '>{status.replaceAll('_', ' ')}</p>
+              <p className='font-medium capitalize text-xs sm:text-sm truncate '>{status.replaceAll('_', ' ')}</p>
               <p className={'text-base sm:text-lg truncate ' + fugaz.className}>{statuses[status]}{status === 'num_days' ? ' 🔥 ' : ' '}</p>
             </div>
           );
         })}
       </div>
-      <h4 className={'text-5xl sm:text-6xl md:text-7xl text-center ' + fugaz.className }>
+      <h4 className={'text-5xl sm:text-6xl md:text-7xl text-center ' + fugaz.className}>
         How do you <span className='textGradient'>feel</span> today?
       </h4>
       <div className='flex items-stretch flex-wrap gap-4'>
-        {Object.keys(moods).map((mood, moodIndex) =>{
+        {Object.keys(moods).map((mood, moodIndex) => {
           return (
             <button onClick={() => {
-                const currentMoodValue = moodIndex + 1
-                handleSetMood(currentMoodValue)
-            }} className={ 'p-4 px-5 rounded-2xl purpleShadow duration-200 bg-indigo-50 hover:bg-indigo-100 text-center flex flex-col items-center gap-2 flex-1'} key={moodIndex}>
+              const currentMoodValue = moodIndex + 1
+              handleSetMood(currentMoodValue)
+            }} className={'p-4 px-5 rounded-2xl purpleShadow duration-200 bg-pink-50 hover:bg-pink-100 text-center flex flex-col items-center gap-2 flex-1'} key={moodIndex}>
               <p className='text-4xl sm:text-5xl md:text-6xl'>{moods[mood]}</p>
-              <p className={'text-indigo-500 text-xs sm:text-sm md:text-base ' + fugaz.className}>{mood}</p>
+              <p className={'text-pink-500 text-xs sm:text-sm md:text-base ' + fugaz.className}>{mood}</p>
             </button>
           )
-          
         })}
       </div>
       <Calandar completeData={data} handleSetMood={handleSetMood} />
-      
     </div>
   );
 }
