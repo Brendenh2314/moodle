@@ -1,7 +1,7 @@
 import { Fugaz_One } from "@next/font/google";
 import React from "react";
 import Button from "./Button";
-import Calandar from "./Calandar";
+import Calendar from "./Calendar";
 import Link from "next/link";
 import CallToAction from "./CallToAction";
 
@@ -27,7 +27,7 @@ export default function Hero() {
         <span className="font-semibold"> every day of every year</span>
       </p>
       <CallToAction />
-      <Calandar demo/>
+      <Calendar demo/>
     </div>
   );
 }

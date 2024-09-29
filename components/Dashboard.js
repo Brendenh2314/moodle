@@ -2,7 +2,7 @@
 import { Fugaz_One } from '@next/font/google';
 import React, { useEffect, useState } from 'react'
 import Button from './Button';
-import Calandar from './Calandar';
+import Calendar from './Calendar';
 import { useAuth } from '@/context/AuthContext';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
@@ -124,7 +124,7 @@ export default function Dashboard() {
           )
         })}
       </div>
-      <Calandar completeData={data} handleSetMood={handleSetMood} />
+      <Calendar completeData={data} handleSetMood={handleSetMood} />
     </div>
   );
 }
